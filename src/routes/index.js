@@ -4,6 +4,13 @@ const path = require("path");
 const logger = require("elk-logging");
 const { v4: uuidv4 } = require("uuid");
 const fs = require("fs/promises");
+const fsSync = require("fs");
+const { TMP_FOLDER_PATH } = require("../../server.config");
+
+if (!fsSync.existsSync(TMP_FOLDER_PATH)) {
+  fsSync.mkdirSync(TMP_FOLDER_PATH);
+}
+
 router.post("/convertToText", async ({ body }, res) => {
   if (!body.EncodedAudioFile) {
     res.status(400).send({ err: "missing EncodedAudioFile" });

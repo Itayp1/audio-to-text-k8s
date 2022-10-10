@@ -8,4 +8,5 @@ module.exports = {
   SERVICE_NAME: process.env.SERVICE_NAME || "audio-to-text",
   MODEL_PATH: path.join(__dirname, "model"),
   FFMPEG_PATH: process.env.FFMPEG_PATH || path.join(__dirname, "ffmpeg.exe"),
+  TMP_FOLDER_PATH: path.join(__dirname, "tmp"),
 };
