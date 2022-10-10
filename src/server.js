@@ -43,3 +43,14 @@ app.use((err, req, res, next) => {
 app.listen(conf.PORT, () => {
   logger(`Server has started - port ${conf.PORT}`);
 });
+
+process.on("unhandledRejection", (reason) => {
+  logger(`message:${reason ? reason.message : ""} stack:${reason ? reason.stack : ""}`);
+});
+process.on("uncaughtException", (err) => {
+  logger(`message:${err.message || err} stack:${err.stack || null}`);
+});
+process.on("SIGINT", () => {
+  logger(`SIGINT`);
+  process.exit();
+});
