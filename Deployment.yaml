@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: "audio-to-text-k8s"
-          image: "itayp/audio-to-text-k8s:13"
+          image: "itayp/audio-to-text-k8s:15"
           ports:
             - containerPort: 3000
           livenessProbe:
@@ -26,11 +26,11 @@ spec:
             periodSeconds: 30
           resources:
             limits:
-              cpu: 2000m
-              memory: 2048Mi
+              cpu: 100m
+              memory: 256Mi
             requests:
-              cpu: "2000m"
-              memory: 2048Mi
+              cpu: "20m"
+              memory: 64Mi
           env:
             - name: "SERVICE_NAME"
               value: "audio-to-text-k8s"
